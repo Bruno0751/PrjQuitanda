@@ -22,7 +22,7 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
 
     public GUIManutencaoDeFrutas() {
         initComponents();
-        selectAll();
+        find();
     }
 
     @SuppressWarnings("unchecked")
@@ -270,12 +270,12 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
     private void jbDeletarCoisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeletarCoisaActionPerformed
         delete();
         clear();
-        selectAll();
+        find();
     }//GEN-LAST:event_jbDeletarCoisaActionPerformed
 
     private void jbAtualizaCoisasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizaCoisasActionPerformed
         clear();
-        selectAll();
+        find();
     }//GEN-LAST:event_jbAtualizaCoisasActionPerformed
 
     private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
@@ -285,7 +285,7 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         update();
         clear();
-        selectAll();
+        find();
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jTableFrutasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableFrutasMouseClicked
@@ -294,31 +294,31 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
 
     private void jComboFiltroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboFiltroItemStateChanged
         clear();
-        selectBy();
+        findBy();
     }//GEN-LAST:event_jComboFiltroItemStateChanged
 
     private void jComboFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboFiltroKeyReleased
         clear();
-        selectBy();
+        findBy();
     }//GEN-LAST:event_jComboFiltroKeyReleased
 
     private void jtPesqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesqKeyReleased
         clear();
-        selectBy();
+        findBy();
     }//GEN-LAST:event_jtPesqKeyReleased
 
     private void jButtonCloseSystenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseSystenActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButtonCloseSystenActionPerformed
 
-    private void selectAll() {
+    private void find() {
         try {
 
             FrutaServices frutaServices = FactoryServices.getFrutasServices();
 
             ArrayList<Fruta> lista = new ArrayList<>();
 
-            lista = frutaServices.selectAll();
+            lista = frutaServices.find();
 
             for (int i = 0; i < lista.size(); i++) {
                 defaultTableModel.addRow(new String[]{
@@ -408,10 +408,10 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
         jtIdFruta.setText(null);
     }
 
-    private void selectBy() {
+    private void findBy() {
         try {
             if (jtPesq.getText().isEmpty()) {
-                selectAll();
+                find();
             } else {
                 String pesquisa = jtPesq.getText();
                 String filtro = jComboFiltro.getSelectedItem().toString();
@@ -427,7 +427,7 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
                 }
                 FrutaServices frutaServices = FactoryServices.getFrutasServices();
                 
-                ArrayList<Fruta> lista = frutaServices.selectBy(query);
+                ArrayList<Fruta> lista = frutaServices.findBy(query);
 
                 for (int i = 0; i < lista.size(); i++) {
                     defaultTableModel.addRow(new String[]{

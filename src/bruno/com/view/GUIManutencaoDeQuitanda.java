@@ -22,7 +22,7 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
 
     public GUIManutencaoDeQuitanda() {
         initComponents();
-        select();
+        find();
     }
 
     @SuppressWarnings("unchecked")
@@ -308,28 +308,28 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
 
     private void jbAtualizarQuitandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarQuitandaActionPerformed
         clear();
-        select();
+        find();
     }//GEN-LAST:event_jbAtualizarQuitandaActionPerformed
 
     private void jtPesqQuitandaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPesqQuitandaKeyReleased
         clear();
-        filter();
+        findBy();
     }//GEN-LAST:event_jtPesqQuitandaKeyReleased
 
     private void jComboQuitandaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboQuitandaItemStateChanged
         clear();
-        filter();
+        findBy();
     }//GEN-LAST:event_jComboQuitandaItemStateChanged
 
     private void jComboQuitandaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboQuitandaKeyReleased
         clear();
-        filter();
+        findBy();
     }//GEN-LAST:event_jComboQuitandaKeyReleased
 
     private void jbDeletarQuitandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeletarQuitandaActionPerformed
         delete();
         clear();
-        select();
+        find();
     }//GEN-LAST:event_jbDeletarQuitandaActionPerformed
 
     private void jTableQuitandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableQuitandaMouseClicked
@@ -339,21 +339,21 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
     private void jbAlterarQuitandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarQuitandaActionPerformed
         update();
         clear();
-        select();
+        find();
     }//GEN-LAST:event_jbAlterarQuitandaActionPerformed
 
     private void jButtonCloseSysten3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseSysten3ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButtonCloseSysten3ActionPerformed
 
-    private void select() {
+    private void find() {
         try {
 
             QuitandaServices quitandaServices = FactoryServices.getQuitandaServices();
 
             ArrayList<Quitanda> lista = new ArrayList<>();
 
-            lista = quitandaServices.select();
+            lista = quitandaServices.find();
 
             for (int i = 0; i < lista.size(); i++) {
                 defaultTableModel.addRow(new String[]{
@@ -377,10 +377,10 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
         jtFuncionarioQuitanda.setText(null);
     }
 
-    private void filter() {
+    private void findBy() {
         try {
             if (jtPesqQuitanda.getText().isEmpty()) {
-                select();
+                find();
             } else {
                 String pesquisa = jtPesqQuitanda.getText();
                 String filtro = jComboQuitanda.getSelectedItem().toString();
@@ -396,7 +396,7 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
                 }
                 QuitandaServices quitandaServices = FactoryServices.getQuitandaServices();
                 
-                ArrayList<Quitanda> listaQuitandas = quitandaServices.filter(query);
+                ArrayList<Quitanda> listaQuitandas = quitandaServices.findBy(query);
 
                 for (int i = 0; i < listaQuitandas.size(); i++) {
                     defaultTableModel.addRow(new String[]{

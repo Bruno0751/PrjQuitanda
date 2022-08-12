@@ -17,142 +17,126 @@ import bruno.com.persistence.ConexaoMysqlBruno;
  */
 public class FrutaDAO {
 
-    private String selectAll = "SELECT * FROM frutas_quitanda";
+    private final String SELECT = "SELECT * FROM frutas";
 
-    public void insert(Fruta fruta) throws SQLException, ClassNotFoundException {
+    public void insert(Fruta obj) throws SQLException, ClassNotFoundException {
         System.out.println("into method insert");
 
-        Statement statement = null;
-        Connection conexaoMysqlBruno = null;
+        Statement st;
+        Connection conexaoMysqlBruno;
         conexaoMysqlBruno = ConexaoMysqlBruno.conectar();
-
-            statement = conexaoMysqlBruno.createStatement();
-        
-
+        st = conexaoMysqlBruno.createStatement();
         try {
-            String sql = "INSERT INTO frutas_quitanda(id_fruta, nome, valor, quantidade, data_registro, hora_registro)"
-                    + "VALUES (NULL, '" + fruta.getNome() + "'," + fruta.getValorCusto() + "," + fruta.getQuantidade() + ", NOW(), NOW());";
-            statement.execute(sql);
+            String sql = "INSERT INTO frutas"
+                    + " VALUES (NULL, '" + obj.getNome() + "'," + obj.getValorCusto() + "," + obj.getQuantidade() + ", NOW(), NOW());";
+            st.execute(sql);
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Erro Ao Efetuar QUERY \n" + e.getMessage() + "\n");
+            throw new SQLException("Erro Ao Inserir Fruta");
         } finally {
-            statement.close();
+            st.close();
         }
     }
 
-    public ArrayList<Fruta> selectAll() throws SQLException, ClassNotFoundException {
-        System.out.println("into method selectAll");
+    public ArrayList<Fruta> find() throws SQLException, ClassNotFoundException {
+        System.out.println("into method find");
 
-        Statement statement = null;
-        Connection conexaoMysqlBruno = null;
-        ArrayList<Fruta> lista = null;
+        Statement st;
+        Connection conexaoMysqlBruno;
+        ArrayList<Fruta> lista;
         conexaoMysqlBruno = ConexaoMysqlBruno.conectar();
 
-            statement = conexaoMysqlBruno.createStatement();
-        
+        st = conexaoMysqlBruno.createStatement();
 
         try {
-            ResultSet resultSet = statement.executeQuery(this.selectAll);
-            lista = new ArrayList<>();
-            while (resultSet.next()) {
-                Fruta fruta = new Fruta();
-
-                fruta.setIdFruta(resultSet.getLong("id_fruta"));
-                fruta.setNome(resultSet.getString("nome"));
-                fruta.setValorCusto(resultSet.getFloat("valor"));
-                fruta.setQuantidade(resultSet.getInt("quantidade"));
-                lista.add(fruta);
+            try (ResultSet rs = st.executeQuery(this.SELECT)) {
+                lista = new ArrayList<>();
+                while (rs.next()) {
+                    Fruta obj = new Fruta();
+                    
+                    obj.setIdFruta(rs.getLong("id_fruta"));
+                    obj.setNome(rs.getString("nome"));
+                    obj.setValorCusto(rs.getFloat("valor"));
+                    obj.setQuantidade(rs.getInt("quantidade"));
+                    lista.add(obj);
+                }
             }
-            resultSet.close();
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Erro Ao Efetuar QUERY \n" + e.getMessage() + "\n");
+            throw new SQLException("Erro Ao Buscar Frutas");
         } finally {
-            statement.close();
+            st.close();
         }
 
-            conexaoMysqlBruno.close();
-        
+        conexaoMysqlBruno.close();
+
         return lista;
     }
 
-    public ArrayList<Fruta> selectBy(String query) throws SQLException, ClassNotFoundException {
-        System.out.println("into method selectBy");
+    public ArrayList<Fruta> findBy(String query) throws SQLException, ClassNotFoundException {
+        System.out.println("into method findBy");
 
-        Statement statement = null;
-        Connection conexaoMysqlBruno = null;
+        Statement st;
+        Connection conexaoMysqlBruno;
         ArrayList<Fruta> lista = null;
         conexaoMysqlBruno = ConexaoMysqlBruno.conectar();
 
-            statement = conexaoMysqlBruno.createStatement();
-        
+        st = conexaoMysqlBruno.createStatement();
 
         try {
-            String sql = "SELECT * FROM frutas_quitanda " + query + ";";
-            ResultSet resultSet = statement.executeQuery(this.selectAll + " " + query + ";");
-            lista = new ArrayList<>();
-            while (resultSet.next()) {
-                Fruta fruta = new Fruta();
-                fruta.setIdFruta(resultSet.getLong("id_fruta"));
-                fruta.setNome(resultSet.getString("nome"));
-                fruta.setValorCusto(resultSet.getFloat("valor"));
-                fruta.setQuantidade(resultSet.getInt("quantidade"));
-                lista.add(fruta);
+            try (ResultSet rs = st.executeQuery(this.SELECT + " " + query + ";")) {
+                lista = new ArrayList<>();
+                while (rs.next()) {
+                    Fruta fruta = new Fruta();
+                    fruta.setIdFruta(rs.getLong("id_fruta"));
+                    fruta.setNome(rs.getString("nome"));
+                    fruta.setValorCusto(rs.getFloat("valor"));
+                    fruta.setQuantidade(rs.getInt("quantidade"));
+                    lista.add(fruta);
+                }
             }
-            resultSet.close();
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Erro Ao Efetuar QUERY \n" + e.getMessage() + "\n");
+            throw new SQLException("Erro Ao Buscar Fruta");
         } finally {
-            statement.close();
-        }
-
+            st.close();
             conexaoMysqlBruno.close();
-        
+        }
         return lista;
     }
 
     public void delete(long id) throws SQLException, ClassNotFoundException {
         System.out.println("into method delete");
 
-        Statement statement = null;
+        Statement st = null;
         Connection conexaoMysqlBruno = null;
         conexaoMysqlBruno = ConexaoMysqlBruno.conectar();
-            statement = conexaoMysqlBruno.createStatement();
-        
+        st = conexaoMysqlBruno.createStatement();
+
         try {
-            String sql = "DELETE FROM frutas_quitanda WHERE id_fruta = " + id + ";";
-            statement.execute(sql);
+            String sql = "DELETE FROM frutas WHERE id_fruta = " + id + ";";
+            st.execute(sql);
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new SQLException("Erro Ao Efetuar QUERY \n" + e.getMessage() + "\n");
+            throw new SQLException("Erro Ao Deletar Cliente");
         } finally {
-            statement.close();
-        }
+            st.close();
             conexaoMysqlBruno.close();
-        
-            
+        }
     }
 
-    public void update(Fruta fruta) throws SQLException, ClassNotFoundException {
+    public void update(Fruta obj) throws SQLException, ClassNotFoundException {
         System.out.println("into method update");
 
-        Statement statement = null;
+        Statement st = null;
         Connection conexaoMysqlBruno = null;
         conexaoMysqlBruno = ConexaoMysqlBruno.conectar();
-            statement = conexaoMysqlBruno.createStatement();
-        
+        st = conexaoMysqlBruno.createStatement();
+
         try {
-            String sql = "UPDATE frutas_quitanda SET nome = '" + fruta.getNome() + "', valor = " + fruta.getValorCusto() + ", quantidade = " + fruta.getQuantidade() + " WHERE id_fruta = " + fruta.getIdFruta() + ";";
-            statement.executeUpdate(sql);
+            String sql = "UPDATE frutas_quitanda SET nome = '" + obj.getNome() + "', valor = " + obj.getValorCusto() + ", quantidade = " + obj.getQuantidade() + " WHERE id_fruta = " + obj.getIdFruta() + ";";
+            st.executeUpdate(sql);
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new SQLException("Erro Ao Efetuar QUERY \n" + e.getMessage() + "\n");
+            throw new SQLException("Erro Ao Atualizar Fruta");
         } finally {
-            statement.close();
-        }
+            st.close();
             conexaoMysqlBruno.close();
-        
+        }
     }
 }

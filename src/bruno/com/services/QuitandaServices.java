@@ -18,14 +18,14 @@ public class QuitandaServices {
         quitandaDAO.insert(quitanda);
     }
     
-    public ArrayList<Quitanda> select() throws SQLException, ClassNotFoundException {
+    public ArrayList<Quitanda> find() throws SQLException, ClassNotFoundException {
         QuitandaDAO quitandaDAO = DAOFactory.getQuitandaDAO();
-        return quitandaDAO.select();
+        return quitandaDAO.find();
     }
     
-    public ArrayList<Quitanda> filter(String query) throws SQLException, ClassNotFoundException {
+    public ArrayList<Quitanda> findBy(String query) throws SQLException, ClassNotFoundException {
         QuitandaDAO quitandaDAO = DAOFactory.getQuitandaDAO();
-        return quitandaDAO.filter(query);
+        return quitandaDAO.findBy(query);
     }
     
     public  void deletarQuitanda(long id) throws SQLException, ClassNotFoundException {

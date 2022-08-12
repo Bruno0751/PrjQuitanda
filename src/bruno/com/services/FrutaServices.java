@@ -18,14 +18,14 @@ public class FrutaServices {
         frutaDAO.insert(obj);
     }
     
-    public ArrayList<Fruta> selectAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Fruta> find() throws SQLException, ClassNotFoundException {
         FrutaDAO frutaDAO = DAOFactory.getFrutasDAO();
-        return frutaDAO.selectAll();
+        return frutaDAO.find();
     }
     
-    public ArrayList<Fruta> selectBy(String query) throws SQLException, ClassNotFoundException {
+    public ArrayList<Fruta> findBy(String query) throws SQLException, ClassNotFoundException {
         FrutaDAO frutaDAO = DAOFactory.getFrutasDAO();
-        return frutaDAO.selectBy(query);
+        return frutaDAO.findBy(query);
     }
     
     public  void delete(long id) throws SQLException, ClassNotFoundException {
