@@ -130,7 +130,7 @@ public class FrutaDAO {
         st = conexaoMysqlBruno.createStatement();
 
         try {
-            String sql = "UPDATE frutas_quitanda SET nome = '" + obj.getNome() + "', valor = " + obj.getValorCusto() + ", quantidade = " + obj.getQuantidade() + " WHERE id_fruta = " + obj.getIdFruta() + ";";
+            String sql = "UPDATE frutas SET nome = '" + obj.getNome() + "', valor = " + obj.getValorCusto() + ", quantidade = " + obj.getQuantidade() + " WHERE id_fruta = " + obj.getIdFruta() + ";";
             st.executeUpdate(sql);
         } catch (SQLException e) {
             throw new SQLException("Erro Ao Atualizar Fruta");

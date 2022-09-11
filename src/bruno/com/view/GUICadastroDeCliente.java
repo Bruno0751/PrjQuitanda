@@ -215,9 +215,9 @@ public class GUICadastroDeCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbCadatrarClienteActionPerformed
 
     private void jbCadatrarClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbCadatrarClienteKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            insert();
-        }
+//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+//            insert();
+//        }
     }//GEN-LAST:event_jbCadatrarClienteKeyPressed
 
     private void jButtonCloseSystenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseSystenActionPerformed
@@ -226,7 +226,7 @@ public class GUICadastroDeCliente extends javax.swing.JInternalFrame {
 
     private void jtIdadeClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtIdadeClienteKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            jbCadatrarCliente.grabFocus();
+            jtNomeCliente.grabFocus();
         }
     }//GEN-LAST:event_jtIdadeClienteKeyPressed
 

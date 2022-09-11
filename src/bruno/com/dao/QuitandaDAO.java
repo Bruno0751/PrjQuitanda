@@ -114,7 +114,7 @@ public class QuitandaDAO {
         st = conexaoMysqlBruno.createStatement();
 
         try {
-            String sql = "DELETE FROM quitandas_quitanda WHERE id_quitanda = " + id + ";";
+            String sql = "DELETE FROM quitandas WHERE id_quitanda = " + id + ";";
             st.execute(sql);
         } catch (Exception e) {
             throw new SQLException("Erro Ao Deletar Quitanda");
@@ -133,8 +133,7 @@ public class QuitandaDAO {
         st = conexaoMysqlBruno.createStatement();
 
         try {
-
-            String sql = "UPDATE quitandas_quitanda SET nome = '" + obj.getNome() + "', cliente = '" + obj.getClientes() + "', funcionario = '" + obj.getFuncionarios() + "' WHERE id_quitanda = " + obj.getIdQuitanda() + ";";
+            String sql = "UPDATE quitandas SET nome = '" + obj.getNome() + "', cliente = '" + obj.getClientes() + "', funcionario = '" + obj.getFuncionarios() + "' WHERE id_quitanda = " + obj.getIdQuitanda() + ";";
             st.executeUpdate(sql);
         } catch (SQLException e) {
             throw new SQLException("Erro Ao Atualizar Quitanda");

@@ -217,7 +217,7 @@ public class GUICadastroDeFruta extends javax.swing.JInternalFrame {
 
     private void jtValorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtValorKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            jbCadastroCoisas.grabFocus();
+            jtQuantidade.grabFocus();
         }
     }//GEN-LAST:event_jtValorKeyPressed
 
@@ -235,7 +235,7 @@ public class GUICadastroDeFruta extends javax.swing.JInternalFrame {
         try {
             Fruta fruta = new Fruta();
 
-            fruta.setNome(jlNome.getText());
+            fruta.setNome(jtNome.getText());
             fruta.setValorCusto(Float.parseFloat(jtValor.getText()));
             fruta.setQuantidade(Integer.parseInt(jtQuantidade.getText()));
 

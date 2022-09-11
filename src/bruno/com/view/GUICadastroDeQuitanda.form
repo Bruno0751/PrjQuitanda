@@ -67,17 +67,14 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jlNomeQuitanda" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jlClienteQuintanda" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
                               <Component id="jtNomeQuitanda" alignment="0" max="32767" attributes="0"/>
                               <Component id="jtClieteQuitanda" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jlFuncionarioQuitanda" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jlNomeQuitanda" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlClienteQuintanda" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jlFuncionarioQuitanda" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>

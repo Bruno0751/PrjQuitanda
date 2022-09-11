@@ -29,6 +29,7 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jtIdFruta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFrutas = new javax.swing.JTable();
         jbLimpar = new javax.swing.JButton();
@@ -40,7 +41,6 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
         jComboFiltro = new javax.swing.JComboBox<>();
         jButtonCloseSysten = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jtIdFruta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jtValorFruta = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -48,12 +48,15 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jtQuantidadeFruta = new javax.swing.JTextField();
 
+        jtIdFruta.setEnabled(false);
+
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Manutenção Tabela de Frutas");
+        setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
-        jTableFrutas.setBorder(null);
         jTableFrutas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -155,7 +158,7 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtPesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jButtonCloseSysten.setText("Desligar");
@@ -169,8 +172,6 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel1.setText("Código:");
-
-        jtIdFruta.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel2.setText("Preço:");
@@ -187,41 +188,35 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jtIdFruta, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)))
                             .addComponent(jtValorFruta)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jtNomeFruta)
                             .addComponent(jtQuantidadeFruta)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel1))
+                                    .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbAtualizaCoisas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(176, 176, 176)
+                .addComponent(jbAtualizaCoisas)
+                .addGap(18, 18, 18)
+                .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonCloseSysten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbDeletarCoisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jbDeletarCoisa, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -230,12 +225,9 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtIdFruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLayeredPane2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -248,20 +240,14 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtQuantidadeFruta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButtonCloseSysten, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbDeletarCoisa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbAtualizaCoisas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAtualizaCoisas, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCloseSysten, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbDeletarCoisa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -311,6 +297,10 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
         System.exit(0);
     }//GEN-LAST:event_jButtonCloseSystenActionPerformed
 
+    private void abrirCadastroDeFrutas() {
+        JOptionPane.showMessageDialog(null, "em breve", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     private void find() {
         try {
 
@@ -352,9 +342,9 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
                         "Selecione Uma Linha");
             } else {
                 String id = jTableFrutas.getValueAt(linha, 0).toString();
-                
+
                 FrutaServices frutaServices = FactoryServices.getFrutasServices();
-                
+
                 frutaServices.delete(Long.parseLong(id));
 
                 JOptionPane.showMessageDialog(this, "Fruta Deletado");
@@ -388,20 +378,25 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
 
     private void update() {
         try {
-            Fruta fruta = new Fruta();
-            
-            fruta.setIdFruta(Long.parseLong(jtIdFruta.getText()));
-            fruta.setNome(jtNomeFruta.getText());
-            fruta.setValorCusto(Float.parseFloat(jtValorFruta.getText()));
-            fruta.setQuantidade(Integer.parseInt(jtQuantidadeFruta.getText()));
+            int linha = jTableFrutas.getSelectedRow();
+            if (linha == -1) {
+                JOptionPane.showMessageDialog(null, "Selecione Uma Linha");
+            } else {
+                Fruta fruta = new Fruta();
 
-            FrutaServices frutaServices = bruno.com.services.FactoryServices.getFrutasServices();
+                fruta.setIdFruta(Long.parseLong(jtIdFruta.getText()));
+                fruta.setNome(jtNomeFruta.getText());
+                fruta.setValorCusto(Float.parseFloat(jtValorFruta.getText()));
+                fruta.setQuantidade(Integer.parseInt(jtQuantidadeFruta.getText()));
 
-            frutaServices.update(fruta);
+                FrutaServices frutaServices = bruno.com.services.FactoryServices.getFrutasServices();
 
-            JOptionPane.showMessageDialog(
-                    rootPane,
-                    "Fruta Alterado Com Sucesso");
+                frutaServices.update(fruta);
+
+                JOptionPane.showMessageDialog(
+                        rootPane,
+                        "Fruta Alterado Com Sucesso");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -426,7 +421,7 @@ public class GUIManutencaoDeFrutas extends javax.swing.JInternalFrame {
                     query = "WHERE quantidade = " + pesquisa;
                 }
                 FrutaServices frutaServices = FactoryServices.getFrutasServices();
-                
+
                 ArrayList<Fruta> lista = frutaServices.findBy(query);
 
                 for (int i = 0; i < lista.size(); i++) {

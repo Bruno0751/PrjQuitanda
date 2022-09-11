@@ -395,7 +395,7 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
                     query = "WHERE funcionario LIKE '%" + pesquisa + "%'";
                 }
                 QuitandaServices quitandaServices = FactoryServices.getQuitandaServices();
-                
+
                 ArrayList<Quitanda> listaQuitandas = quitandaServices.findBy(query);
 
                 for (int i = 0; i < listaQuitandas.size(); i++) {
@@ -418,17 +418,13 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
         try {
             int linha = jTableQuitanda.getSelectedRow();
             if (linha == -1) {
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Selecione Uma Linha");
+                JOptionPane.showMessageDialog(null, "Selecione Uma Linha");
             } else {
                 String id = jTableQuitanda.getValueAt(linha, 0).toString();
                 QuitandaServices quitandaServices = FactoryServices.getQuitandaServices();
                 quitandaServices.deletarQuitanda(Long.parseLong(id));
 
-                JOptionPane.showMessageDialog(
-                        this,
-                        "Quitanda Deletada");
+                JOptionPane.showMessageDialog(this, "Quitanda Deletada");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -461,20 +457,23 @@ public class GUIManutencaoDeQuitanda extends javax.swing.JInternalFrame {
 
     private void update() {
         try {
-            Quitanda quitanda = new Quitanda();
+            int linha = jTableQuitanda.getSelectedRow();
+            if (linha == -1) {
+                JOptionPane.showMessageDialog(null, "Selecione Uma Linha");
+            } else {
+                Quitanda quitanda = new Quitanda();
 
-            quitanda.setIdQuitanda(Long.parseLong(jtIdQuitanda.getText()));
-            quitanda.setNome(jtNomeQuitanda.getText());
-            quitanda.setClientes(jtClienteQuitanda.getText());
-            quitanda.setFuncionarios(jtFuncionarioQuitanda.getText());
+                quitanda.setIdQuitanda(Long.parseLong(jtIdQuitanda.getText()));
+                quitanda.setNome(jtNomeQuitanda.getText());
+                quitanda.setClientes(jtClienteQuitanda.getText());
+                quitanda.setFuncionarios(jtFuncionarioQuitanda.getText());
 
-            QuitandaServices quitandaServices = bruno.com.services.FactoryServices.getQuitandaServices();
+                QuitandaServices quitandaServices = bruno.com.services.FactoryServices.getQuitandaServices();
 
-            quitandaServices.update(quitanda);
+                quitandaServices.update(quitanda);
 
-            JOptionPane.showMessageDialog(
-                    rootPane,
-                    "Quitanda Alterado Com Sucesso");
+                JOptionPane.showMessageDialog(rootPane, "Quitanda Alterado Com Sucesso");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }

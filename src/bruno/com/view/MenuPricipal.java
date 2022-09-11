@@ -2,8 +2,15 @@
 package bruno.com.view;
 
 import bruno.com.persistence.ConexaoMysqlBruno;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -16,8 +23,11 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class MenuPricipal extends javax.swing.JFrame {
 
-    public MenuPricipal() {
+    private String ipDaMaquina;
+
+    public MenuPricipal() throws UnknownHostException {
         initComponents();
+        this.ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
         setExtendedState(MAXIMIZED_BOTH);
     }
 
@@ -36,6 +46,7 @@ public class MenuPricipal extends javax.swing.JFrame {
         jMenuItemManutencaoFruta = new javax.swing.JMenuItem();
         jMenuItemManutencaoQuitandas = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
+        jMenuPrj = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bem Vindo - Area De Trabalho");
@@ -128,6 +139,14 @@ public class MenuPricipal extends javax.swing.JFrame {
         });
         jMenuBarPrincipal.add(jMenuSair);
 
+        jMenuPrj.setText("Projeto");
+        jMenuPrj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuPrjMouseClicked(evt);
+            }
+        });
+        jMenuBarPrincipal.add(jMenuPrj);
+
         setJMenuBar(jMenuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,7 +170,7 @@ public class MenuPricipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuManutencaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuManutencaoActionPerformed
-        //abriManutençaoFrutas();
+        JOptionPane.showMessageDialog(null, "em breve", "Atenção", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuManutencaoActionPerformed
 
     private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
@@ -159,13 +178,11 @@ public class MenuPricipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuSairMouseClicked
 
     private void jMenuItemCadsatroQuitandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadsatroQuitandaActionPerformed
-//        abrirCadastroDeQuitanda();
-        JOptionPane.showMessageDialog(null, "em breve", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        abrirCadastroDeQuitanda();
     }//GEN-LAST:event_jMenuItemCadsatroQuitandaActionPerformed
 
     private void jMenuItemManutencaoFrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManutencaoFrutaActionPerformed
-        JOptionPane.showMessageDialog(null, "em breve", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-//        abrirManutencaoDeFrutas();
+        abrirManutencaoDeFrutas();
     }//GEN-LAST:event_jMenuItemManutencaoFrutaActionPerformed
 
     private void jMenuItemCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroClienteActionPerformed
@@ -173,8 +190,8 @@ public class MenuPricipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCadastroClienteActionPerformed
 
     private void jMenuItemManutencaoQuitandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManutencaoQuitandasActionPerformed
-//        abrirManutencaoDeQuitanda();
-        JOptionPane.showMessageDialog(null, "em breve", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        abrirManutencaoDeQuitanda();
+//        JOptionPane.showMessageDialog(null, "em breve", "Atenção", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItemManutencaoQuitandasActionPerformed
 
     private void jMenuItemManutencaoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManutencaoClientesActionPerformed
@@ -182,84 +199,74 @@ public class MenuPricipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemManutencaoClientesActionPerformed
 
     private void jMenuItemCadastroFrutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroFrutaActionPerformed
-//        abrirCadastroDeFrutas();
-        JOptionPane.showMessageDialog(null, "em breve", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        abrirCadastroDeFrutas();
     }//GEN-LAST:event_jMenuItemCadastroFrutaActionPerformed
 
+    private void jMenuPrjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuPrjMouseClicked
+        System.out.println(this.ipDaMaquina);
+        if (this.ipDaMaquina.contains("192.168.")) {
+            try {
+                Desktop.getDesktop().open(new File("D:\\PrjDesktopJava\\ok\\PrjQuitanda"));
+            } catch (IOException ex) {
+                Logger.getLogger(MenuPricipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jMenuPrjMouseClicked
+
     private void abrirCadastroDeFrutas() {
-        GUICadastroDeFruta gcc = new GUICadastroDeFruta();
-        jAreaDeTrabalho.add(gcc);
-        gcc.setVisible(true);
+        GUICadastroDeFruta obj = new GUICadastroDeFruta();
+        jAreaDeTrabalho.add(obj);
+        obj.setVisible(true);
     }
 
     private void abrirCadastroDeQuitanda() {
-        GUICadastroDeQuitanda gcq = new GUICadastroDeQuitanda();
-        jAreaDeTrabalho.add(gcq);
-        gcq.setVisible(true);
+        GUICadastroDeQuitanda obj = new GUICadastroDeQuitanda();
+        jAreaDeTrabalho.add(obj);
+        obj.setVisible(true);
     }
 
     private void abrirCadastroDeCliente() {
-        GUICadastroDeCliente gccl = new GUICadastroDeCliente();
-        jAreaDeTrabalho.add(gccl);
-        gccl.setVisible(true);
+        GUICadastroDeCliente obj = new GUICadastroDeCliente();
+        jAreaDeTrabalho.add(obj);
+        obj.setVisible(true);
     }
 
     private void abrirManutencaoDeFrutas() {
-        GUIManutencaoDeFrutas gmf = new GUIManutencaoDeFrutas();
-        jAreaDeTrabalho.add(gmf);
-        gmf.setVisible(true);
+        GUIManutencaoDeFrutas obj = new GUIManutencaoDeFrutas();
+        jAreaDeTrabalho.add(obj);
+        obj.setVisible(true);
     }
 
     private void abrirManutencaoDeQuitanda() {
-        GUIManutencaoDeQuitanda gmq = new GUIManutencaoDeQuitanda();
-        jAreaDeTrabalho.add(gmq);
-        gmq.setVisible(true);
+        GUIManutencaoDeQuitanda obj = new GUIManutencaoDeQuitanda();
+        jAreaDeTrabalho.add(obj);
+        obj.setVisible(true);
     }
 
     private void abrirManutencaoDeCliente() {
-        GUIManutencaoDeClientes gmcl = new GUIManutencaoDeClientes();
-        jAreaDeTrabalho.add(gmcl);
-        gmcl.setVisible(true);
+        GUIManutencaoDeClientes obj = new GUIManutencaoDeClientes();
+        jAreaDeTrabalho.add(obj);
+        obj.setVisible(true);
     }
 
     public static void main(String args[]) throws SQLException {
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        Connection c = null;
+        try {
+            c = ConexaoMysqlBruno.conectar();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao Conectar", "ERRO", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            c.close();
+        }
         try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
             JOptionPane.showMessageDialog(null, "Falha ao abrir software\n" + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
         }
-        Connection c = null;
-        try{
-            c = ConexaoMysqlBruno.conectar();
-        } catch (Exception e) {
-            c.rollback();
-            JOptionPane.showMessageDialog(null, "Erro ao Conectar", "ERRO", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            c.close();
-        }
-        /*
-        Connection conexaoMysqlGente = null;
-        Connection conexaoMysqlBruno = null;
-        Connection conexao = null;
-        conexaoMysqlBruno = ConexaoMysqlBruno.conectar();
-        if (conexaoMysqlBruno == null) {
-            conexaoMysqlGente = ConexaoMysqlGente.conectar();
-            conexao = conexaoMysqlGente;
-            System.out.println("conexao gente");
-        } else {
-            conexao = conexaoMysqlBruno;
-        }
-        if (conexaoMysqlBruno == null && conexaoMysqlGente == null) {
-            System.out.println("conexao não encontrada");
-            System.exit(0);
-        }
-        conexao.close();
-         */
- /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("".equals(info.getName())) {
@@ -267,27 +274,22 @@ public class MenuPricipal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPricipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPricipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPricipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | javax.swing.UnsupportedLookAndFeelException | IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(MenuPricipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPricipal().setVisible(true);
+                try {
+                    new MenuPricipal().setVisible(true);
+                } catch (UnknownHostException ex) {
+                    Logger.getLogger(MenuPricipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jAreaDeTrabalho;
+    protected javax.swing.JDesktopPane jAreaDeTrabalho;
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenu jMenuCadastrar;
     private javax.swing.JMenuItem jMenuItemCadastroCliente;
@@ -297,6 +299,7 @@ public class MenuPricipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemManutencaoFruta;
     private javax.swing.JMenuItem jMenuItemManutencaoQuitandas;
     private javax.swing.JMenu jMenuManutencao;
+    private javax.swing.JMenu jMenuPrj;
     private javax.swing.JMenu jMenuSair;
     // End of variables declaration//GEN-END:variables
 }

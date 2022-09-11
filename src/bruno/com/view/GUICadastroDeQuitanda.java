@@ -217,14 +217,14 @@ public class GUICadastroDeQuitanda extends javax.swing.JInternalFrame {
 
     private void jtFuncionarioQuitandaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtFuncionarioQuitandaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            jbCadastrarQuitanda.grabFocus();
+            jtNomeQuitanda.grabFocus();
         }
     }//GEN-LAST:event_jtFuncionarioQuitandaKeyPressed
 
     private void jbCadastrarQuitandaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbCadastrarQuitandaKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            insert();
-        }
+//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+//            insert();
+//        }
     }//GEN-LAST:event_jbCadastrarQuitandaKeyPressed
 
     private void jbLimparQuitandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparQuitandaActionPerformed

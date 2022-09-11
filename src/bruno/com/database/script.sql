@@ -29,7 +29,7 @@ CREATE TABLE frutas (
     hora_registro TIME NOT NULL,
     CONSTRAINT pkid_fruta PRIMARY KEY(id_fruta));
     
-INSERT INTO frutas_quitanda VALUES
+INSERT INTO frutas VALUES
 (NULL, 'Abacaxi', 10.00, 50, NOW(), NOW()),
 (NULL, 'Abacate', 12.50, 30, NOW(), NOW()),
 (NULL, 'Pitaia', 31.10, 50, NOW(), NOW());
